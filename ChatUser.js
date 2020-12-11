@@ -72,6 +72,12 @@ class ChatUser {
 		} else if (msg.type === "get-joke") {
 			msg.text = await this.getJoke();
 			this.handleChat(msg.text);
+		} else if (msg.type === "get-members") {
+			msg.text = "In room:";
+			this.room.members.forEach((member) => {
+				msg.text += ` ${member.name}`;
+			});
+			this.handleChat(msg.text);
 		} else throw new Error(`bad message: ${msg.type}`);
 	}
 

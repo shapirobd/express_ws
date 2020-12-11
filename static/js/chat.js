@@ -53,6 +53,8 @@ $("form").submit(async function (evt) {
 	let data = { type: "chat", text: $("#m").val() };
 	if (data.text.includes("/joke")) {
 		data = { type: "get-joke" };
+	} else if (data.text.includes("/members")) {
+		data = { type: "get-members" };
 	}
 	ws.send(JSON.stringify(data));
 
